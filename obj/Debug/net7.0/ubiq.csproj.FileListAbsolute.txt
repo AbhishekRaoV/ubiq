@@ -1,0 +1,4 @@
+/home/ubuntu/ubiq/ubiq/obj/Debug/net7.0/ubiq.GeneratedMSBuildEditorConfig.editorconfig
+/home/ubuntu/ubiq/ubiq/obj/Debug/net7.0/ubiq.AssemblyInfoInputs.cache
+/home/ubuntu/ubiq/ubiq/obj/Debug/net7.0/ubiq.AssemblyInfo.cs
+/home/ubuntu/ubiq/ubiq/obj/Debug/net7.0/ubiq.csproj.CoreCompileInputs.cache
