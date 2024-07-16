@@ -126,7 +126,7 @@
     - name: Get kube flannel pods
       # delegate_to: auctane
       shell: |
-        kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/auctane/Documentation/kube-flannel.yml 
+        kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml  
         sleep 5
         kubectl taint node $(hostname) node-role.kubernetes.io/control-plane:NoSchedule-
 
