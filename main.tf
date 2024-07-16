@@ -4,7 +4,7 @@ provider "aws" {
 
 resource "aws_instance" "example" {
   ami           = "ami-09e67e426f25ce0d7" // Ubuntu 20.04 LTS 64-bit AMI, you may need to change this for other regions
-  instance_type = "t2.micro"
+  instance_type = "t2.medium"
   key_name      = "nextgen-devops-team"     // Replace with your SSH key pair name
   tags = {
     Name = "auctane-demo"
