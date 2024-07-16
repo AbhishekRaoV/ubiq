@@ -20,7 +20,8 @@
 
     - name: Docker login to registry
       command: >
-        docker login 10.63.16.153:32003
+        docker login -u admin -p admin 10.63.16.153:32003
         creates=/root/.docker/config.json
-      args:
-        stdin: "username admin\npassword admin\n"
+      environment:
+        DOCKER_CLI_DISABLE_CONTENT_TRUST: "true"
+
