@@ -1,0 +1,26 @@
+---
+- name: Configure Docker and Docker Registry Login
+  hosts: auctane
+  become: yes
+  tasks:
+    - name: Create daemon.json file
+      copy:
+        content: |
+          {
+            "insecure-registries": ["10.63.20.122:32003", "10.63.12.180:32003", "10.63.16.153:32003"]
+          }
+        dest: /etc/docker/daemon.json
+        mode: 0644
+
+    - name: Reload Docker daemon
+      systemd:
+        name: docker
+        state: restarted
+        daemon_reload: yes
+
+    - name: Docker login to registry
+      command: >
+        docker login 10.63.16.153:32003
+        creates=/root/.docker/config.json
+      args:
+        stdin: "username admin\npassword admin\n"
