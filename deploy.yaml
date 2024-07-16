@@ -1,28 +1,8 @@
 ---
-- name: Deploy Kubernetes resources
+- name: Create pod.yaml from template
   hosts: auctane
-  become: yes
   tasks:
-    - name: Create Docker registry secret
-      shell: kubectl create secret docker-registry regcred --docker-server=http://10.63.12.180:32003 --docker-username=admin --docker-password=admin || true
-
-    - name: Create pod
-      shell: |
-        cat <<EOF | kubectl apply -f -
-        apiVersion: v1
-        kind: Pod
-        metadata:
-          labels:
-            run: ubiq
-          name: ubiq
-          namespace: default
-        spec:
-          imagePullSecrets:
-            - name: regcred
-          containers:
-            - image: 10.63.16.153:32003/ubiq:1.0
-              name: ubiq
-        EOF
-
-    - name: Create NodePort service
-      shell: kubectl expose pod ubiq --type=NodePort --port=80
+    - name: Generate pod.yaml from template
+      ansible.builtin.template:
+        src: pod_template.yaml.j2
+        dest: /home/ubuntu/pod.yaml
