@@ -29,6 +29,12 @@
         name: curl
         state: present
 
+    - name: Create keyrings directory
+      file:
+        path: /etc/apt/keyrings
+        state: directory
+      become: true
+
     - name: Add k8s signing key
       shell: curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 
